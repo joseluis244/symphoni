@@ -10,6 +10,14 @@ import ModificarUsuario from "./componentes/ModificarUsuario"
 
 function App() {
   const [Componente, setComponete] = useState()
+  const [Permisos, setpermisos] = useState({
+    CrearUsuario:false,
+    EliminarUsuario: true,
+    ModificarUsuario:true,
+    CrearCliente:true,
+    EliminarCliente:true,
+    ModificarCliente:true
+  })
   let Manejo1 = ()=>{
     setComponete(<CrearCliente/>)
   }
@@ -33,7 +41,7 @@ function App() {
       <div>
         <h1>nombre usuario</h1>
         <div className="ListaAcciones">
-          <button onClick={Manejo1} className="Btn">crear usuario</button>
+          {Permisos.CrearUsuario && <button onClick={Manejo1} className="Btn">crear usuario</button>}
           <button onClick={Manejo2} className="Btn">eliminar usuario</button>
           <button onClick={Manejo3} className="Btn">modificar usuario</button>
           <button onClick={Manejo4} className="Btn">crear cliente</button>
@@ -41,8 +49,8 @@ function App() {
           <button onClick={Manejo6} className="Btn">modificar clientes</button>
         </div>
         <div>
-          {Componente}
-        </div>
+          {Componente}          
+        </div>        
       </div>
     </div>
   );
